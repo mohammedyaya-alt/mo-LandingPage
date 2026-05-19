@@ -468,6 +468,12 @@ section { padding: 100px 0; }
   letter-spacing: 0.04em;
 }
 
+.award-gold {
+  background: rgba(251, 191, 36, 0.15);
+  color: #fbbf24;
+  border-color: rgba(251, 191, 36, 0.35);
+}
+
 .tc-org {
   font-size: 14px;
   color: var(--accent);
@@ -641,6 +647,32 @@ section { padding: 100px 0; }
   font-size: 14px;
   color: var(--muted);
   font-family: var(--mono);
+}
+
+/* ── Built With ── */
+#built-with {
+  padding: 40px 0 20px;
+}
+
+.built-with-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.built-with-label {
+  font-size: 13px;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.built-with-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
 }
 
 /* ── Footer ── */
