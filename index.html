@@ -1,335 +1,541 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mohammed Arshad — ML/AI Engineer</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Mohammed Arshad — Data Engineering student at Cleveland State University building ETL/ELT pipelines on AWS, Spark, Databricks, and Airflow.">
+<meta name="robots" content="index, follow">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="theme-color" content="#161a20">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; script-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'; object-src 'none'; connect-src 'none'">
+<meta property="og:title" content="Mohammed Arshad — Data Engineer">
+<meta property="og:description" content="Pipelines that move data from raw signal to decision. ETL/ELT systems across AWS, Spark, and Airflow.">
+<meta property="og:type" content="website">
+<title>Mohammed Arshad — Data Engineer</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23161a20'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='36' fill='%23a3763f' text-anchor='middle'%3EM%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#161a20;
+    --paper:#eae5d8;
+    --slate:#3d4a5c;
+    --slate-soft:#5a6b80;
+    --brass:#a3763f;
+    --brass-dim:#8a6534;
+    --line:#c7c0ac;
+    --line-dark:#8a8571;
+    --white-ish:#f5f2e9;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    font-size:16px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--brass);color:var(--white-ish);}
+
+  a{color:inherit;}
+
+  .mono{font-family:'IBM Plex Mono',monospace;}
+
+  .wrap{
+    max-width:1080px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  /* ---------- corner marks (blueprint device) ---------- */
+  .plate{
+    position:relative;
+    border:1px solid var(--line-dark);
+    background:var(--white-ish);
+  }
+  .plate::before,.plate::after,
+  .plate .cmA, .plate .cmB{
+    content:"";
+    position:absolute;
+    width:14px;height:14px;
+    border:1px solid var(--ink);
+    opacity:.55;
+  }
+  .plate::before{top:-1px;left:-1px;border-right:none;border-bottom:none;}
+  .plate::after{bottom:-1px;right:-1px;border-left:none;border-top:none;}
+  .plate .cmA{top:-1px;right:-1px;border-left:none;border-bottom:none;}
+  .plate .cmB{bottom:-1px;left:-1px;border-right:none;border-top:none;}
+
+  /* ---------- top bar ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(234,229,216,.88);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line-dark);
+  }
+  .nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:18px 0;
+  }
+  .brand{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:20px;
+    letter-spacing:.02em;
+  }
+  .brand span{color:var(--brass-dim);}
+  nav ul{list-style:none;display:flex;gap:28px;}
+  nav a{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12.5px;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    text-decoration:none;
+    color:var(--slate);
+    position:relative;
+    padding-bottom:2px;
+  }
+  nav a::after{
+    content:"";position:absolute;left:0;bottom:-2px;
+    width:0;height:1px;background:var(--brass-dim);
+    transition:width .25s ease;
+  }
+  nav a:hover::after{width:100%;}
+  .navlinks{display:flex;}
+  .navtoggle{display:none;}
+
+  /* ---------- hero ---------- */
+  .hero{padding:76px 0 40px;}
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12.5px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--brass-dim);
+    display:flex;align-items:center;gap:10px;
+    margin-bottom:22px;
+  }
+  .eyebrow .dash{width:34px;height:1px;background:var(--line-dark);display:inline-block;}
+
+  h1.title{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    font-size:clamp(38px,6vw,68px);
+    line-height:1.04;
+    letter-spacing:-.01em;
+    max-width:820px;
+  }
+  h1.title em{
+    font-style:italic;
+    font-weight:500;
+    color:var(--slate);
+  }
+  .lede{
+    max-width:600px;
+    margin-top:22px;
+    font-size:17.5px;
+    color:var(--slate);
+  }
+  .hero-meta{
+    margin-top:34px;
+    display:flex;flex-wrap:wrap;gap:10px 28px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13px;
+    color:var(--slate-soft);
+  }
+  .hero-meta a{text-decoration:none;border-bottom:1px solid var(--line-dark);}
+  .hero-meta a:hover{color:var(--brass-dim);border-color:var(--brass-dim);}
+
+  /* ---------- schematic diagram ---------- */
+  .schematic-wrap{margin:56px 0 8px;}
+  .schematic-label{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--slate-soft);
+    margin-bottom:10px;
+    display:flex;justify-content:space-between;
+  }
+  .schematic{
+    padding:34px 16px 26px;
+    overflow-x:auto;
+  }
+  .schematic svg{display:block;margin:0 auto;min-width:640px;width:100%;height:auto;}
+
+  .node-box{fill:var(--white-ish);stroke:var(--ink);stroke-width:1;}
+  .node-label{font-family:'IBM Plex Mono',monospace;font-size:11px;fill:var(--ink);}
+  .node-sub{font-family:'IBM Plex Mono',monospace;font-size:9px;fill:var(--slate-soft);}
+  .pipe{stroke:var(--line-dark);stroke-width:1;fill:none;}
+  .flow-dot{fill:var(--brass);}
+  .tick{stroke:var(--line-dark);stroke-width:1;}
+
+  @keyframes flow{
+    from{ offset-distance: 0%; }
+    to{ offset-distance: 100%; }
+  }
+  .flow-dot{
+    offset-path: path('M0,0');
+    animation: flow 3.2s linear infinite;
+  }
+  @media (prefers-reduced-motion: reduce){
+    .flow-dot{animation:none;}
+  }
+
+  /* ---------- section shell ---------- */
+  section{padding:64px 0;border-top:1px solid var(--line-dark);}
+  .sec-head{
+    display:flex;align-items:baseline;gap:16px;
+    margin-bottom:36px;
+  }
+  .sec-num{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;color:var(--brass-dim);
+  }
+  .sec-title{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    font-size:28px;
+  }
+
+  /* ---------- experience ---------- */
+  .role{
+    display:grid;
+    grid-template-columns:170px 1fr;
+    gap:24px;
+    padding:26px 0;
+    border-top:1px solid var(--line);
+  }
+  .role:first-of-type{border-top:none;}
+  .role-when{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;color:var(--slate-soft);
+    padding-top:3px;
+  }
+  .role-title{font-weight:600;font-size:16.5px;}
+  .role-org{color:var(--slate);font-size:14.5px;margin-top:2px;margin-bottom:12px;}
+  .role ul{padding-left:18px;}
+  .role li{margin-bottom:7px;font-size:15px;color:#232830;}
+  .role li::marker{color:var(--brass-dim);}
+  .badge{
+    display:inline-block;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;
+    color:var(--brass-dim);
+    border:1px solid var(--brass-dim);
+    padding:2px 7px;
+    border-radius:2px;
+    margin-left:8px;
+    transform:translateY(-2px);
+  }
+
+  /* ---------- projects ---------- */
+  .proj{
+    padding:28px;
+    margin-bottom:22px;
+    position:relative;
+  }
+  .proj:last-child{margin-bottom:0;}
+  .proj-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:6px;}
+  .proj-name{font-family:'Fraunces',serif;font-weight:500;font-size:21px;}
+  .proj-flag{
+    font-family:'IBM Plex Mono',monospace;font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;
+    color:var(--white-ish);background:var(--slate);
+    padding:3px 8px;
+  }
+  .proj-stack{
+    font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--slate-soft);margin-bottom:16px;
+  }
+  .proj ul{padding-left:18px;}
+  .proj li{margin-bottom:8px;font-size:15px;color:#232830;}
+  .proj li::marker{color:var(--brass-dim);}
+
+  /* ---------- stack grid ---------- */
+  .stackgrid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:1px;
+    background:var(--line-dark);
+    border:1px solid var(--line-dark);
+  }
+  .stackcell{background:var(--white-ish);padding:20px 22px;}
+  .stackcell h4{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--brass-dim);margin-bottom:10px;
+  }
+  .stackcell p{font-size:14.5px;color:#232830;line-height:1.6;}
+
+  /* ---------- education / certs strip ---------- */
+  .strip{
+    display:flex;flex-wrap:wrap;gap:0;
+  }
+  .strip-item{
+    flex:1 1 260px;
+    padding:22px 26px;
+    border-left:1px solid var(--line-dark);
+  }
+  .strip-item:first-child{border-left:none;}
+  .strip-item h5{font-weight:600;font-size:15.5px;margin-bottom:4px;}
+  .strip-item .meta{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--slate-soft);}
+
+  /* ---------- footer / contact ---------- */
+  footer{
+    padding:70px 0 50px;
+    border-top:1px solid var(--line-dark);
+    background:var(--ink);
+    color:var(--white-ish);
+  }
+  footer .sec-title{color:var(--white-ish);}
+  .cta-title{
+    font-family:'Fraunces',serif;font-style:italic;font-weight:500;
+    font-size:clamp(28px,4vw,42px);
+    max-width:640px;
+    margin-bottom:28px;
+  }
+  .cta-links{display:flex;flex-wrap:wrap;gap:14px 30px;font-family:'IBM Plex Mono',monospace;font-size:14px;}
+  .cta-links a{text-decoration:none;border-bottom:1px solid rgba(245,242,233,.35);padding-bottom:2px;}
+  .cta-links a:hover{border-color:var(--brass);color:var(--brass);}
+  .foot-bottom{
+    margin-top:52px;padding-top:20px;border-top:1px solid rgba(245,242,233,.15);
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
+    font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:rgba(245,242,233,.5);
+  }
+
+  @media (max-width:720px){
+    .role{grid-template-columns:1fr;gap:8px;}
+    nav ul{gap:16px;}
+    .navlinks{display:none;}
+  }
+</style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav id="navbar">
-    <div class="nav-inner">
-      <span class="nav-logo">MA</span>
-      <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
+<header>
+  <div class="wrap nav">
+    <div class="brand">M. ARSHAD <span>/ DE</span></div>
+    <nav>
+      <ul class="navlinks">
+        <li><a href="mailto:mohammedya.ept@gmail.com">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" style="border-top:none;">
+  <div class="wrap">
+    <div class="eyebrow"><span class="dash"></span> Data Engineering — Cleveland, OH</div>
+    <h1 class="title">Pipelines that move data<br><em>from raw signal to decision.</em></h1>
+    <p class="lede">I'm Mohammed — a CS student at Cleveland State (Math minor), graduating December 2026. I build ETL/ELT systems across the AWS, Spark, and Airflow stack, and I like the unglamorous part: making the data trustworthy before anyone visualizes it.</p>
+    <div class="hero-meta">
+      <a href="mailto:mohammedya.ept@gmail.com">mohammedya.ept@gmail.com</a>
+      <a href="https://linkedin.com/in/mohammedarshad31" target="_blank" rel="noopener noreferrer">linkedin.com/in/mohammedarshad31</a>
+      <a href="https://github.com/mohammedyaya-alt" target="_blank" rel="noopener noreferrer">github.com/mohammedyaya-alt</a>
+      <span>AWS Cloud Practitioner Certified</span>
+    </div>
+
+    <div class="schematic-wrap">
+      <div class="schematic-label">
+        <span>FIG. 01 — FLAGSHIP PIPELINE, INGEST → SERVE</span>
+        <span>REV. 2026.07</span>
+      </div>
+      <div class="plate schematic">
+        <div class="cmA"></div><div class="cmB"></div>
+        <svg viewBox="0 0 980 220" xmlns="http://www.w3.org/2000/svg">
+          <!-- ticks -->
+          <line class="tick" x1="0" y1="210" x2="980" y2="210"/>
+          <g class="mono">
+            <!-- pipe path -->
+            <path id="pipepath" class="pipe" d="M95,110 L235,110 L235,110 L385,110 L385,110 L535,110 L535,110 L685,110 L685,110 L835,110"/>
+
+            <!-- nodes -->
+            <g>
+              <rect class="node-box" x="20" y="80" width="150" height="60"/>
+              <text class="node-label" x="35" y="106">Adzuna API</text>
+              <text class="node-sub" x="35" y="122">live job postings</text>
+            </g>
+            <g>
+              <rect class="node-box" x="170" y="80" width="150" height="60"/>
+              <text class="node-label" x="185" y="106">AWS S3</text>
+              <text class="node-sub" x="185" y="122">partitioned by date/region</text>
+            </g>
+            <g>
+              <rect class="node-box" x="320" y="80" width="150" height="60"/>
+              <text class="node-label" x="335" y="106">PySpark</text>
+              <text class="node-sub" x="335" y="122">on Databricks</text>
+            </g>
+            <g>
+              <rect class="node-box" x="470" y="80" width="150" height="60"/>
+              <text class="node-label" x="485" y="106">Airflow</text>
+              <text class="node-sub" x="485" y="122">scheduled orchestration</text>
+            </g>
+            <g>
+              <rect class="node-box" x="620" y="80" width="150" height="60"/>
+              <text class="node-label" x="635" y="106">Streamlit</text>
+              <text class="node-sub" x="635" y="122">live dashboard</text>
+            </g>
+
+            <!-- connecting lines between boxes -->
+            <line class="pipe" x1="170" y1="110" x2="170" y2="110"/>
+            <line class="pipe" x1="20" y1="110" x2="0" y2="110"/>
+            <line class="pipe" x1="770" y1="110" x2="850" y2="110"/>
+            <line class="pipe" x1="170" y1="110" x2="170" y2="110"/>
+
+            <!-- flow dots -->
+            <circle class="flow-dot" r="3.2" style="offset-path:path('M20,110 L850,110')"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">01</span>
+      <span class="sec-title">Experience</span>
+    </div>
+
+    <div class="role">
+      <div class="role-when">May 2025 –<br>Sep 2025</div>
+      <div>
+        <div class="role-title">Data Engineering Research Assistant</div>
+        <div class="role-org">Cleveland State University — Office of Research</div>
+        <ul>
+          <li>Built end-to-end Python ETL pipelines ingesting, cleaning, and transforming multi-modal wearable sensor data (sleep, heart rate, HRV, movement) across 10,000+ data points per subject.</li>
+          <li>Cut preprocessing time ~40% by optimizing transformation logic, then authored schema documentation so the pipeline was reproducible by other researchers.</li>
+          <li>Engineered predictive features — rolling averages, HRV variability metrics, trend indicators — structured for downstream ML model training.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="role">
+      <div class="role-when">Aug 2023 –<br>May 2026</div>
+      <div>
+        <div class="role-title">Engineering Peer Teacher <span class="badge">EPT of the Year</span></div>
+        <div class="role-org">Cleveland State University</div>
+        <ul>
+          <li>Selected as the program's top peer teacher out of the full cohort for leading weekly Python, algorithms, and OOP labs for 20+ students per term.</li>
+          <li>Built lab content reinforcing debugging and computational thinking as a foundation for later data systems coursework.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">02</span>
+      <span class="sec-title">Projects</span>
+    </div>
+
+    <div class="plate proj">
+      <div class="cmA"></div><div class="cmB"></div>
+      <div class="proj-top">
+        <div class="proj-name">Real-Time Job Market Intelligence Dashboard</div>
+        <div class="proj-flag">Flagship — Shipped</div>
+      </div>
+      <div class="proj-stack">Python · PySpark · AWS S3 · Databricks · Airflow · Streamlit</div>
+      <ul>
+        <li>Designed and shipped a full production-style pipeline solo: ingested live job posting data via the Adzuna API into AWS S3, then applied PySpark transformations on Databricks to model labor demand trends by role, location, and skill.</li>
+        <li>Modeled and partitioned the S3 storage layer by date and region to support incremental batch loads and fast downstream querying.</li>
+        <li>Orchestrated the full pipeline on Apache Airflow for scheduled batch ingestion and transformation, then deployed a Streamlit dashboard surfacing labor market signals in near real time.</li>
+        <li>Covers the entire modern DE stack end-to-end — ingestion, cloud storage, distributed processing, orchestration, and visualization — in one deployed system.</li>
       </ul>
     </div>
-  </nav>
 
-  <!-- HERO -->
-  <section id="hero">
-    <div class="hero-bg">
-      <canvas id="particles"></canvas>
-    </div>
-    <div class="hero-content reveal">
-      <p class="hero-greeting">Hey, I'm</p>
-      <h1 class="hero-name">Mohammed Arshad</h1>
-      <h2 class="hero-title">ML / AI Engineer <span class="cursor">|</span></h2>
-      <p class="hero-sub">
-        Python · Data Pipelines · Feature Engineering · Deep Learning<br/>
-        Building intelligent systems — from classical ML to deep learning.
-      </p>
-      <div class="hero-btns">
-        <a href="#projects" class="btn-primary">View Projects</a>
-        <a href="#contact" class="btn-ghost">Get In Touch</a>
+    <div class="plate proj">
+      <div class="cmA"></div><div class="cmB"></div>
+      <div class="proj-top">
+        <div class="proj-name">YouTube Trending Data Analysis &amp; ETL</div>
+        <div class="proj-flag">Stepping Stone</div>
       </div>
-      <div class="hero-links">
-        <a href="https://github.com/Yaya3124" target="_blank" rel="noopener" aria-label="GitHub">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-        </a>
-        <a href="https://linkedin.com/in/mohammedarshad31" target="_blank" rel="noopener" aria-label="LinkedIn">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-        </a>
-        <a href="mailto:m.lnu100@vikes.csuohio.edu" aria-label="Email">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-        </a>
-      </div>
+      <div class="proj-stack">Python · PySpark · SQLite · YouTube Data API v3</div>
+      <ul>
+        <li>Built an ETL pipeline ingesting trending video data across 3 regions (US, CA, GB), applying PySpark transformations for engagement-rate calculation and view-tier bucketing (low/medium/high/viral).</li>
+        <li>Loaded 148+ transformed records into SQLite with an analytical schema designed for reproducibility — used to learn distributed processing patterns ahead of the Databricks-based flagship build.</li>
+      </ul>
     </div>
-    <div class="scroll-hint">
-      <div class="scroll-dot"></div>
-    </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ABOUT -->
-  <section id="about">
-    <div class="container">
-      <h2 class="section-title reveal">About Me</h2>
-      <div class="about-grid reveal">
-        <div class="about-text">
-          <p>
-            I'm a Computer Science student at <strong>Cleveland State University</strong> (graduating Dec 2026)
-            with a minor in Mathematics. My focus is on <strong>ML/AI engineering</strong> — data pipelines,
-            feature engineering, and applied statistics, with experience in both classical ML and deep learning.
-          </p>
-          <p>
-            Most recently I've been an <strong>ML/Data Engineering Research Assistant</strong> building ETL
-            pipelines for multi-modal wearable sensor datasets — engineering features for downstream ML models
-            and cutting preprocessing time by ~40%. I'm also a <strong>Peer Teacher</strong> for Java Programming (primary) &amp;
-            Python Fundamentals, recognized as Peer Teacher of the Month (Feb 2025).
-          </p>
-          <p>
-            I'm looking for <strong>Data Engineering and ML/AI roles</strong> starting after December 2026.
-          </p>
-          <div class="about-badges">
-            <span class="badge">AWS CCP Certified</span>
-            <span class="badge">AWS Data Engineer (In Progress)</span>
-            <span class="badge">CSU — Dec 2026</span>
-            <span class="badge">Available Dec 2026</span>
-          </div>
+<section id="stack">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">03</span>
+      <span class="sec-title">Stack</span>
+    </div>
+
+    <div class="stackgrid">
+      <div class="stackcell">
+        <h4>Languages</h4>
+        <p>Python, SQL, Java, Bash/Shell</p>
+      </div>
+      <div class="stackcell">
+        <h4>Data Engineering</h4>
+        <p>ETL/ELT pipelines, Apache Spark (PySpark), Apache Airflow, Databricks, data modeling, batch processing</p>
+      </div>
+      <div class="stackcell">
+        <h4>Cloud &amp; Tools</h4>
+        <p>AWS (S3, Cloud Practitioner Certified), Docker, Git/GitHub, Linux, Jupyter, VS Code</p>
+      </div>
+      <div class="stackcell">
+        <h4>Data &amp; Analytics</h4>
+        <p>Pandas, NumPy, Scikit-learn, time-series processing, EDA, data cleaning &amp; transformation</p>
+      </div>
+      <div class="stackcell">
+        <h4>Concepts</h4>
+        <p>Data structures &amp; algorithms, OOP, REST APIs, database systems</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">04</span>
+      <span class="sec-title">Education &amp; Certifications</span>
+    </div>
+    <div class="plate">
+      <div class="cmA"></div><div class="cmB"></div>
+      <div class="strip">
+        <div class="strip-item">
+          <h5>B.S. Computer Science, Minor in Mathematics</h5>
+          <div class="meta">Cleveland State University · Aug 2022 – Dec 2026</div>
         </div>
-        <div class="about-card">
-          <div class="about-avatar">MA</div>
-          <div class="about-info">
-            <div class="info-row"><span class="info-label">School</span><span>Cleveland State University</span></div>
-            <div class="info-row"><span class="info-label">Degree</span><span>B.S. Computer Science</span></div>
-            <div class="info-row"><span class="info-label">Minor</span><span>Mathematics</span></div>
-            <div class="info-row"><span class="info-label">Grad</span><span>December 2026</span></div>
-            <div class="info-row"><span class="info-label">Location</span><span>Cleveland, OH</span></div>
-          </div>
+        <div class="strip-item">
+          <h5>AWS Certified Cloud Practitioner</h5>
+          <div class="meta">Certified</div>
+        </div>
+        <div class="strip-item">
+          <h5>Databricks Certified Data Engineer Associate</h5>
+          <div class="meta">Pursuing</div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- SKILLS -->
-  <section id="skills">
-    <div class="container">
-      <h2 class="section-title reveal">Technical Skills</h2>
-      <div class="skills-grid reveal">
-        <div class="skill-group">
-          <h3>Languages</h3>
-          <div class="tags">
-            <span class="tag">Python</span>
-            <span class="tag">SQL</span>
-            <span class="tag">Java</span>
-            <span class="tag">JavaScript</span>
-            <span class="tag">Bash / Shell</span>
-          </div>
-        </div>
-        <div class="skill-group">
-          <h3>ML / AI</h3>
-          <div class="tags">
-            <span class="tag">Scikit-learn</span>
-            <span class="tag">TensorFlow</span>
-            <span class="tag">PyTorch</span>
-            <span class="tag">LSTMs</span>
-            <span class="tag">Transformers</span>
-            <span class="tag">VQCs</span>
-            <span class="tag">Feature Engineering</span>
-          </div>
-        </div>
-        <div class="skill-group">
-          <h3>Data &amp; Analysis</h3>
-          <div class="tags">
-            <span class="tag">Pandas</span>
-            <span class="tag">NumPy</span>
-            <span class="tag">Matplotlib</span>
-            <span class="tag">EDA</span>
-            <span class="tag">Time-Series Processing</span>
-            <span class="tag">Statistical Modeling</span>
-          </div>
-        </div>
-        <div class="skill-group">
-          <h3>MLOps &amp; Tools</h3>
-          <div class="tags">
-            <span class="tag">Git / GitHub</span>
-            <span class="tag">Docker</span>
-            <span class="tag">Linux</span>
-            <span class="tag">Jupyter</span>
-            <span class="tag">VS Code</span>
-            <span class="tag">REST APIs</span>
-          </div>
-        </div>
-        <div class="skill-group">
-          <h3>Cloud &amp; Databases</h3>
-          <div class="tags">
-            <span class="tag cert">AWS Cloud Practitioner</span>
-            <span class="tag cert">AWS Data Engineer (In Progress)</span>
-            <span class="tag">MS SQL Server</span>
-            <span class="tag">Relational DB Design</span>
-          </div>
-        </div>
-      </div>
+<footer id="contact">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">05</span>
+      <span class="sec-title">Contact</span>
     </div>
-  </section>
-
-  <!-- EXPERIENCE -->
-  <section id="experience">
-    <div class="container">
-      <h2 class="section-title reveal">Experience</h2>
-      <div class="timeline">
-
-        <div class="timeline-item reveal">
-          <div class="timeline-dot"></div>
-          <div class="timeline-card">
-            <div class="tc-header">
-              <div>
-                <h3>ML / Data Engineering Research Assistant</h3>
-                <p class="tc-org">Cleveland State University — Office of Research</p>
-              </div>
-              <span class="tc-date">May 2025 – Sep 2025</span>
-            </div>
-            <ul>
-              <li>Built Python ETL pipelines to ingest, clean, and transform multi-modal wearable sensor datasets (sleep, HRV, movement) across 10,000+ data points per subject — preparing clean feature sets for ML modeling.</li>
-              <li>Performed EDA and signal-quality analysis; engineered rolling averages, variability metrics, and trend indicators as input features for downstream predictive models. Reduced preprocessing time by ~40%.</li>
-              <li>Authored technical documentation for dataset schema, preprocessing logic, and reproducibility standards.</li>
-            </ul>
-            <div class="tc-tags">
-              <span>Python</span><span>ETL</span><span>Pandas</span><span>NumPy</span><span>EDA</span><span>Feature Engineering</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="timeline-item reveal">
-          <div class="timeline-dot"></div>
-          <div class="timeline-card">
-            <div class="tc-header">
-              <div>
-                <h3>Engineering Peer Teacher — Java Programming &amp; Python Fundamentals <span class="award">Teacher of the Month — Feb 2025</span> <span class="award award-gold">EPT of the Year — 2026</span></h3>
-                <p class="tc-org">Cleveland State University</p>
-              </div>
-              <span class="tc-date">Aug 2023 – May 2026</span>
-            </div>
-            <ul>
-              <li>Led weekly labs on Java Programming (primary) and Python Fundamentals for 20+ students per session.</li>
-              <li>Awarded Engineering Peer Teacher of the Month (Feb 2025) for student outcomes and engagement.</li>
-            </ul>
-            <div class="tc-tags">
-              <span>Java</span><span>Python</span><span>OOP</span><span>Data Structures</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="timeline-item reveal">
-          <div class="timeline-dot"></div>
-          <div class="timeline-card">
-            <div class="tc-header">
-              <div>
-                <h3>Mathematics Tutor</h3>
-                <p class="tc-org">Cleveland State University</p>
-              </div>
-              <span class="tc-date">Aug 2024 – Dec 2024</span>
-            </div>
-            <ul>
-              <li>Tutored linear algebra, calculus, and discrete math — core mathematical foundations for ML/AI.</li>
-            </ul>
-            <div class="tc-tags">
-              <span>Linear Algebra</span><span>Calculus</span><span>Discrete Math</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
+    <div class="cta-title">Looking for Data Engineering / ML-AI roles with a January 2027 start — let's talk pipelines.</div>
+    <div class="cta-links">
+      <a href="mailto:mohammedya.ept@gmail.com">mohammedya.ept@gmail.com</a>
     </div>
-  </section>
-
-  <!-- PROJECTS -->
-  <section id="projects">
-    <div class="container">
-      <h2 class="section-title reveal">Projects</h2>
-      <div class="projects-grid">
-
-        <div class="project-card reveal">
-          <div class="project-top">
-            <svg class="project-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2v-4M9 21H5a2 2 0 01-2-2v-4m0 0h18"/></svg>
-            <div class="project-links">
-              <span class="wip-badge">Research</span>
-            </div>
-          </div>
-          <h3>Wearable Sensor ML Pipeline</h3>
-          <p class="project-sub">Feature Engineering · Time-Series</p>
-          <p class="project-desc">End-to-end pipeline processing time-series biometric data (sleep, HRV, movement) from wearable sensors. Engineered predictive features — rolling stats, variability metrics, trend indicators — structured for downstream ML model training.</p>
-          <div class="project-tags">
-            <span>Python</span><span>Pandas</span><span>NumPy</span><span>Scikit-learn</span><span>EDA</span>
-          </div>
-        </div>
-
-        <div class="project-card reveal">
-          <div class="project-top">
-            <svg class="project-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/><circle cx="12" cy="12" r="2"/></svg>
-            <div class="project-links">
-              <span class="wip-badge">Capstone</span>
-            </div>
-          </div>
-          <h3>Psyche Profits — NASA Psyche Mission Game</h3>
-          <p class="project-sub">Game Development · Unity · C#</p>
-          <p class="project-desc">Senior capstone project built for NASA's Psyche Mission — a 2D single-player browser-based game designed to raise public awareness about the spacecraft's journey to the metal-rich asteroid Psyche. Players mine asteroid resources, convert them to credits, and upgrade their assets to win. Built with Unity (WebGL export), with embedded mission facts and sponsor-compliant educational content.</p>
-          <div class="project-tags">
-            <span>Unity</span><span>C#</span><span>WebGL</span><span>Game Design</span><span>NASA</span>
-          </div>
-        </div>
-
-        <div class="project-card reveal">
-          <div class="project-top">
-            <svg class="project-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-            <div class="project-links">
-              <span class="wip-badge">Academic</span>
-            </div>
-          </div>
-          <h3>Quantum ML Exploration</h3>
-          <p class="project-sub">Hybrid Classical-Quantum Models</p>
-          <p class="project-desc">Studied hybrid classical-quantum architectures including VQCs, VQE, and QAOA. Investigated barren plateau optimization challenges in near-term quantum ML models.</p>
-          <div class="project-tags">
-            <span>Python</span><span>Qiskit</span><span>PennyLane</span><span>VQCs</span><span>QAOA</span>
-          </div>
-        </div>
-
-      </div>
+    <div class="foot-bottom">
+      <span>Cleveland, OH</span>
+      <span>Built with Python, PySpark, Airflow — and this page.</span>
     </div>
-  </section>
+  </div>
+</footer>
 
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="container">
-      <div class="contact-box reveal">
-        <h2>Let's Work Together</h2>
-        <p>I'm looking for Data Engineering and ML/AI roles starting after December 2026. If you're working on interesting data or AI problems, I'd love to hear about it.</p>
-        <div class="contact-links">
-          <a href="mailto:m.lnu100@vikes.csuohio.edu" class="btn-primary">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-            Email Me
-          </a>
-          <a href="https://linkedin.com/in/mohammedarshad31" target="_blank" rel="noopener" class="btn-ghost">
-            LinkedIn
-          </a>
-          <a href="https://github.com/Yaya3124" target="_blank" rel="noopener" class="btn-ghost">
-            GitHub
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- BUILT WITH -->
-  <section id="built-with">
-    <div class="container">
-      <div class="built-with-box reveal">
-        <p class="built-with-label">This site was built with</p>
-        <div class="built-with-tags">
-          <span class="tag">HTML5</span>
-          <span class="tag">CSS3</span>
-          <span class="tag">Vanilla JavaScript</span>
-          <span class="tag">Canvas API</span>
-          <span class="tag">Google Fonts</span>
-          <span class="tag">Claude Code</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <p>Designed &amp; built by Mohammed Arshad · 2026</p>
-  </footer>
-
-  <script src="script.js"></script>
 </body>
 </html>
